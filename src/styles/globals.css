@@ -15,6 +15,7 @@
 }
 
 body {
+  @apply bg-gray-500 w-screen h-screen overflow-hidden;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
@@ -25,3 +26,8 @@ body {
     text-wrap: balance;
   }
 }
+@font-face {
+  font-family: 'Carpenter';
+  src: url('/fonts/carpenter.ttf') format('truetype');
+}
+
