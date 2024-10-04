@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
-import Carousel from "@/components/Carousel";
 
 export default function Home() {
   const slides = [
