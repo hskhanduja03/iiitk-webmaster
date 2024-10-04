@@ -5,7 +5,7 @@ const Card = ({ index, item, title, onClick }) => {
     <div className="flex flex-col items-center justify-center w-full p-2">
       <div className="relative h-48 w-full rounded-lg overflow-hidden" onClick={onClick}>
         <img
-          src={item.image}
+          src={item.imageurl}
           alt={`Image ${index + 1}`}
           className="w-full h-full object-cover"
         />
