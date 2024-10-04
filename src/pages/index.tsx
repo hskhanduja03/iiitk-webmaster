@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
+import Carousel from "@/components/Carousel";
 
 export default function Home() {
-  const [currentValue, setCurrentValue] = useState(0); // Step 1: State for counter value
+  const slides = [
+    "https://i.ibb.co/ncrXc2V/1.png",
+    "https://i.ibb.co/B3s7v4h/2.png",
+    "https://i.ibb.co/XXR8kzF/3.png",
+    "https://i.ibb.co/yg7BSdM/4.png",
+  ];
+  const [currentValue, setCurrentValue] = useState(0);
 
   useEffect(() => {
     const startLoader = () => {
-      const counterElement =
-        document.querySelector<HTMLHeadingElement>(".counter");
+      const counterElement = document.querySelector<HTMLHeadingElement>(".counter");
       let currentValue = 0;
 
       const updateCounter = () => {
@@ -46,16 +52,13 @@ export default function Home() {
     });
 
     // Animate the IIIT image
-    gsap.from(
-      ".iiit",
-      {
-        delay:3.5,
-        scale: 2, // Start with a larger size
-        x: "40vw", // Start at the center
-        y: "40vh",
-        transformOrigin: "center center", // Set the origin for scaling
-      }
-    );
+    gsap.from(".iiit", {
+      delay: 3.5,
+      scale: 2,
+      x: "40vw",
+      y: "40vh",
+      transformOrigin: "center center",
+    });
 
     gsap.from(".h1", {
       y: 800,
@@ -82,7 +85,7 @@ export default function Home() {
         {currentValue + "%"}
       </h1>
 
-      <div className=" lg:text-[10vw] overlay absolute flex w-screen h-screen">
+      <div className="lg:text-[10vw] overlay absolute flex w-screen h-screen">
         {[...Array(8)].map((_, idx) => (
           <div key={idx} className="bar w-[20vw] h-[105vh] bg-gray-900"></div>
         ))}
@@ -132,13 +135,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="hero relative w-[calc(70vw-4em)] h-[70vh] mx-auto rounded-lg border-4 border-black">
-        <Image
-          src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
-          alt="Panda"
-          layout="fill"
-          objectFit="cover"
-        />
+      <div className="hero relative w-[calc(50vw-4em)] h-[70vh] mx-auto rounded-lg border-4 border-black overflow-hidden z-30">
+        
       </div>
     </div>
   );
