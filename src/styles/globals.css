@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,10 +15,36 @@
 }
 
 body {
-  @apply bg-gray-500 w-screen h-screen overflow-hidden;
+  @apply bg-gray-500 w-screen h-screen overflow-hidden relative;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(120deg, #c7d2fe, #fed7aa, #c7d2fe, #fed7aa); 
+  background-size: 400% 400%; 
+  animation: rotate 10s infinite ease-in-out; 
+  filter: blur(20px); 
+}
+
+
+@keyframes rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @layer utilities {
@@ -28,10 +52,12 @@ body {
     text-wrap: balance;
   }
 }
+
 @font-face {
   font-family: 'Carpenter';
   src: url('/fonts/carpenter.ttf') format('truetype');
 }
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -60,6 +86,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -87,6 +114,7 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
@@ -95,4 +123,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-

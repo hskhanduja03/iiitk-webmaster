@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
+import Carousel from "@/components/Carousel";
 
 export default function Home() {
   const [currentValue, setCurrentValue] = useState(0);
+  const [counterZIndex, setCounterZIndex] = useState(30); // State for z-index
+  const [bgChange, setBgChange] = useState(false);
+  
+  const changeBg = (value) => {
+    setBgChange(value);
+  };
 
   useEffect(() => {
     const startLoader = () => {
@@ -32,6 +39,7 @@ export default function Home() {
       opacity: 0,
       delay: 3.0,
       duration: 0.25,
+      onComplete: () => setCounterZIndex(0), 
     });
 
     gsap.to(".bar", {
@@ -44,7 +52,6 @@ export default function Home() {
       duration: 1.5,
     });
 
-    // Animate the IIIT image
     gsap.from(".iiit", {
       delay: 3.5,
       scale: 2,
@@ -54,6 +61,7 @@ export default function Home() {
     });
 
     gsap.from(".h1", {
+      opacity: 0,
       y: 800,
       delay: 4,
       stagger: {
@@ -64,6 +72,7 @@ export default function Home() {
     });
 
     gsap.from(".hero", {
+      opacity: 0,
       y: 800,
       opacity: 0,
       delay: 4,
@@ -73,8 +82,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-gray-300 overflow-hidden">
-      <h1 className="lg:text-[10vw] counter text-white absolute flex justify-end items-end w-full h-full text-[15vw] p-2 font-carpenter z-30">
+    <div className="relative w-full h-screen overflow-hidden">
+      <div className={`absolute inset-0 transition-opacity duration-500 ${bgChange ? 'bg-gray-800 opacity-50' : 'opacity-0'}`} />
+
+      <h1
+        className="lg:text-[10vw] counter text-white absolute flex justify-end items-end w-full h-full text-[15vw] p-2 font-carpenter"
+        style={{ zIndex: counterZIndex }} 
+      >
         {currentValue + "%"}
       </h1>
 
@@ -84,8 +98,8 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="header flex justify-between p-4 w-full items-center">
-        <div className="iiit relative w-[10vw] h-[20vh] mx-auto rounded-lg mb-5">
+      <div className="header flex justify-between p-4 w-full items-center text-[#16314b]">
+        <div className="iiit relative w-[10vw] h-[20vh] mx- rounded-lg mb-5">
           <Image
             src="/iiit.png"
             alt="Panda"
@@ -128,8 +142,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="hero relative w-[calc(50vw-4em)] h-[70vh] mx-auto rounded-lg border-4 border-black overflow-hidden z-30">
-        
+      <div className="w-full z-30 flex justify-center items-center hero">
+        <Carousel changeBg={changeBg} />
       </div>
     </div>
   );
