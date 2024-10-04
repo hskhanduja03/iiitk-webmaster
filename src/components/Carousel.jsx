@@ -5,25 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Card from "./Card";
 import Link from "next/link";
 
-const sliderData = [
-  {
-    image:
-      "https://plus.unsplash.com/premium_photo-1685736630644-488e8146a3dc?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Workshop on Foundation of AI for Beginners",
-    date: "October 1, 2024",
-    description:
-      "An introductory workshop on the basics of Artificial Intelligence, covering foundational concepts and practical applications in various fields. Ideal for beginners looking to explore AI.",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1720048171419-b515a96a73b8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
-    title: "Mountain Adventure",
-    date: "September 28, 2024",
-    description:
-      "Join us for an exciting mountain adventure that includes hiking, camping, and exploring breathtaking views. Perfect for nature lovers and adventure seekers.",
-  },
-  // ... other items
-];
 
 export default function SimpleSlider({ changeBg }) {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -45,12 +26,6 @@ export default function SimpleSlider({ changeBg }) {
     setExpandedCard(null);
   };
 
-  const truncateDescription = (description, maxLength = 100) => {
-    if (description.length > maxLength) {
-      return `${description.slice(0, maxLength)}...`;
-    }
-    return description;
-  };
 
   const settings = {
     dots: false,
