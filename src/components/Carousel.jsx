@@ -82,6 +82,8 @@ export default function SimpleSlider({ changeBg }) {
         ))}
       </Slider>
 
+      <h2 className="text-red-500 font-bold text-center mt-5">Images might not be visible the first time. Kindly reload for better experince.</h2>
+
       {expandedCard !== null && (
         <div
           className="fixed w-full top-0 inset-0 flex  items-center justify-center transition-all duration-300"
