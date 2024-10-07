@@ -82,7 +82,7 @@ export default function SimpleSlider({ changeBg }) {
         ))}
       </Slider>
 
-      <h2 className="text-red-500 font-bold text-center mt-5">Images might not be visible the first time. Kindly reload for better experince.</h2>
+      <h2 className="text-red-500 font-bold text-center mt-5">Images might not be visible the first time as backend is on <b className="text-white text-xl">Render</b>. Kindly reload for better experince.</h2>
 
       {expandedCard !== null && (
         <div
